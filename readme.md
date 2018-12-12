@@ -12,4 +12,12 @@ You have 1 unapplied migration(s).
 
 python  manage.py sqlmigrate goods 0001 -  change the database for goods table
 python manage.py migrate -  applies the changes
+
+Django database API
 python manage.py  shell -  python database shell
+from goods.models import Category, Goods
+b = Category()
+b.name = "Shoes"
+b.description = "Shoes and accessories"
+b.save()
+

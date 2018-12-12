@@ -4,6 +4,11 @@ from django.db import models
 class Category(models.Model):
     name = models.CharField(max_length=250)
     description = models.CharField(max_length=500)
+    category_logo = models.CharField(max_length=600)
+
+
+    def __str__(self):
+        return self.name + ' - ' + self.description
 
 class Goods(models.Model):
     author = models.CharField(max_length=250)

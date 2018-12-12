@@ -1,4 +1,14 @@
 from django.http import HttpResponse
+from .models import Category
+from django.template import  loader
 
 def index(request):
-    return HttpResponse("<h1>This is the goods app homepage</h1>")
+    all_categories = Category.objects.all()
+    template = loader.get_template('goods/index.html')
+    context = {
+        'all_categories': all_categories
+    }
+    return HttpResponse(template.render(context, request));
+
+def detail(request, category_id):
+    return HttpResponse("<h2>Details for category id: " + str(category_id) + "</h2>")
