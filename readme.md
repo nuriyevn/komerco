@@ -10,7 +10,8 @@ Migrations for 'goods':
 python manage.py runserver -
 You have 1 unapplied migration(s).
 
-python  manage.py sqlmigrate goods 0001 -  change the database for goods table
+python manage.py makemigrations good
+python  manage.py sqlmigrate good 0001 -  change the database for goods table
 python manage.py migrate -  applies the changes
 
 Django database API

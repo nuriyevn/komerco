@@ -1,10 +1,24 @@
 <img src="{{ category.category_logo }}" style="width: auto; max-height: 150px;" alt="">
 <h1>{{ category.name }}</h1>
 <h3>{{ category.description }}</h3>
-<ul>
-    {% for good in category.good_set.all %}
-    <li> {{ good.good_title }} - {{ good.author}}</li>
-    {% endfor %}
-</ul>
 
-<a href="{% url 'music:index'  %}">Back</a>
+{% if error_message %}
+<p><strong>{{ error_message }}</strong></p>
+{% endif %}
+
+<form action="{% url 'good:favorite'  category.id %}" method="POST">
+    {% csrf_token %}
+    {% for good in category.good_set.all %}
+        <input type="radio" id="good{{ forloop.counter }}" name="good" value="{{good.id}}"/>
+        <label for="good{{ forloop.counter }}">
+            {{ good.good_title }}
+        </label>
+            {% if good.is_favorite %}
+                <img src="http://i.imgur.com/b9b13Rd.png" alt=""/>
+            {% endif %}
+        <br>
+    {% endfor %}
+    <input type="submit" value="Favorite">
+</form>
+
+<a href="{% url 'good:index'  %}">Back</a>

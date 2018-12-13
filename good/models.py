@@ -12,6 +12,7 @@ class Good(models.Model):
     author = models.CharField(max_length=250)
     good_title = models.CharField(max_length=250)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    is_favorite = models.BooleanField(default=False)
 
     def __str__(self):
         return self.author + ' - ' + self.good_title
