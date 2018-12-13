@@ -1,0 +1,10 @@
+<img src="{{ category.category_logo }}" style="width: auto; max-height: 150px;" alt="">
+<h1>{{ category.name }}</h1>
+<h3>{{ category.description }}</h3>
+<ul>
+    {% for good in category.good_set.all %}
+    <li> {{ good.good_title }} - {{ good.author}}</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'music:index'  %}">Back</a>

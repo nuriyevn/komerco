@@ -21,3 +21,14 @@ b.name = "Shoes"
 b.description = "Shoes and accessories"
 b.save()
 
+b = Category.objects.all()   - get all categories
+b = Category.objects.get(pk=1)  - get category with the primary key equal to 1
+b = Category.objects.filter(name__startswith='Com')
+
+
+cat.good_set.all()
+
+Computer Logo
+https://image.freepik.com/free-icon/open-laptop-computer-with-pixel-boxes_318-39349.jpg
+Shoes logo
+https://image.flaticon.com/icons/svg/1077/1077995.svg

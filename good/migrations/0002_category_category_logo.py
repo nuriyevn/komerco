@@ -7,7 +7,7 @@ import django.utils.timezone
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('goods', '0001_initial'),
+        ('good', '0001_initial'),
     ]
 
     operations = [
