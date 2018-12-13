@@ -8,12 +8,12 @@ class Category(models.Model):
     def __str__(self):
         return self.name + ' - ' + self.description
 
-class Good(models.Model):
+class Listing(models.Model):
     author = models.CharField(max_length=250)
-    good_title = models.CharField(max_length=250)
+    listing_title = models.CharField(max_length=250)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     is_favorite = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.author + ' - ' + self.good_title
+        return self.author + ' - ' + self.listing_title
 

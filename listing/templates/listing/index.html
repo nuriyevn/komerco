@@ -5,7 +5,7 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a href="{% url 'good:index' %}" class="navbar-brand">Komerco</a>
+            <a href="{% url 'listing:index' %}" class="navbar-brand">Komerco</a>
         </div>
     </div>
 </nav>
@@ -14,7 +14,7 @@
     <h3>Here are all my categories</h3>
     <ul>
         {% for category in all_categories %}
-        <li><a href="{% url 'good:detail' category.id %}">{{category.name}}</a></li>
+        <li><a href="{% url 'listing:detail' category.id %}">{{category.name}}</a></li>
         {% endfor %}
     </ul>
 {% else %}

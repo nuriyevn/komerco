@@ -1,4 +1,4 @@
-"""killolx URL Configuration
+"""komerco URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.1/topics/http/urls/
@@ -19,5 +19,5 @@ from django.conf.urls import include, url
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^good/', include('good.urls')),
+    url(r'^listing/', include('listing.urls')),
 ]
