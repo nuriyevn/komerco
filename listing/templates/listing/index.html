@@ -1,22 +1,9 @@
-{% load static %}
-<link rel="stylesheet" href="{% static   'good/style.css'%}">
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+{% extends 'listing/base.html' %}
 
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a href="{% url 'listing:index' %}" class="navbar-brand">Komerco</a>
-        </div>
-    </div>
-</nav>
-
-{% if all_categories %}
-    <h3>Here are all my categories</h3>
-    <ul>
-        {% for category in all_categories %}
-        <li><a href="{% url 'listing:detail' category.id %}">{{category.name}}</a></li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <h3>You don't have any categories</h3>
-{% endif %}
+{% block body %}
+        <ul>
+            {% for category in all_categories %}
+            <li><a href="{% url 'listing:detail' category.id %}">{{category.name}}</a></li>
+            {% endfor %}
+        </ul>
+{% endblock %}

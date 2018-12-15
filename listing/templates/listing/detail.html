@@ -1,24 +1,24 @@
-<img src="{{ category.category_logo }}" style="width: auto; max-height: 150px;" alt="">
-<h1>{{ category.name }}</h1>
-<h3>{{ category.description }}</h3>
+{% extends 'listing/base.html' %}
+{% block title %}Category Details{% endblock %}
+{% block body %}
 
-{% if error_message %}
-<p><strong>{{ error_message }}</strong></p>
-{% endif %}
+    <img src="{{ category.category_logo }}" style="width: auto; height: 150px;" alt="">
+    <h1>{{ category.name }}</h1>
+    <h3>{{ category.description }}</h3>
 
-<form action="{% url 'good:favorite'  category.id %}" method="POST">
-    {% csrf_token %}
-    {% for good in category.good_set.all %}
-        <input type="radio" id="good{{ forloop.counter }}" name="good" value="{{good.id}}"/>
-        <label for="good{{ forloop.counter }}">
-            {{ good.good_title }}
-        </label>
-            {% if good.is_favorite %}
-                <img src="http://i.imgur.com/b9b13Rd.png" alt=""/>
-            {% endif %}
-        <br>
-    {% endfor %}
-    <input type="submit" value="Favorite">
-</form>
 
-<a href="{% url 'good:index'  %}">Back</a>
+        {% for listing in category.listing.all %}
+            <input type="radio" id="listing{{ forloop.counter }}" name="listing" value="{{listing.id}}"/>
+            <label for="listing{{ forloop.counter }}">
+                {{ listing.listing_title }}
+            </label>
+                {% if listing.is_favorite %}
+                    <img src="http://i.imgur.com/b9b13Rd.png" alt=""/>
+                {% endif %}
+            <br>
+        {% endfor %}
+
+
+    <a href="{% url 'listing:index'  %}">Back</a>
+
+{% endblock %}

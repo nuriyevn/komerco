@@ -1,22 +1,20 @@
-from .models import Category, Listing
-from django.shortcuts import render, get_object_or_404
+from django.views import generic
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from .models import Category
 
 
-def index(request):
-    all_categories = Category.objects.all()
-    return render(request, 'listing/index.html',  { 'all_categories': all_categories })
+class IndexView(generic.ListView):
+    template_name = 'listing/index.html'
+    context_object_name = 'all_categories'
+    def get_queryset(self):
+        return Category.objects.all()
 
-def detail(request, category_id):
-    category = get_object_or_404(Category, pk=category_id)
-    return render(request, 'listing/detail.html', {"category":category})
+class DetailView(generic.DeleteView):
+    model = Category
+    template_name = 'listing/detail.html'
 
-def favorite(request, category_id):
-    category = get_object_or_404(Category, pk=category_id)
-    try:
-        selected_good = category.good_set.get(pk=request.POST['listing'])
-    except (KeyError, Listing.DoesNotExist):
-        return render(request, 'listing/detail.html', {"category":category, "error_message": "You did not select a valid listing"} )
-    else:
-        selected_good.is_favorite = True
-        selected_good.save()
-        return render(request, 'listing/detail.html', {"category":category})
+class CategoryCreate(CreateView):
+    model = Category
+    fields = ['name', 'description', 'category_logo']
+
+
