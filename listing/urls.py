@@ -10,6 +10,12 @@ urlpatterns = [
     url  (r'^(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name='detail'),
     # /listing/156/favorite
     #url (r'^(?P<category_id>[0-9]+)/favorite$', views.favorite, name='favorite'),
+
+    # /listing/category/add
     url (r'listing/add/$', views.CategoryCreate.as_view(), name='category-add'),
 
+    # /listing/category/2
+    url (r'listing/(?P<pk>[0-9]+)/$', views.CategoryUpdate.as_view(), name='category-update'),
+    # /listing/category/2/delete
+    url (r'listing/(?P<pk>[0-9]+)/delete$', views.CategoryDelete.as_view(), name='category-delete'),
 ]

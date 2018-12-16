@@ -28,14 +28,14 @@
 
         <div class="collapse navbar-collapse" id="topNavBar">
             <ul class="nav navbar-nav">
-                <li class="active" >
+                <li class="{% block categories_active %}{% endblock %}" >
                     <a href="{% url 'listing:index' %}">
                         <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>&nbsp;
                         Categories
                     </a>
                 </li>
 
-                <li class="" >
+                <li class="{% block listings_active %}{% endblock %}" >
                     <a href="{% url 'listing:index' %}">
                         <span class="glyphicon" aria-hidden="true"></span>&nbsp;
                         Listings
