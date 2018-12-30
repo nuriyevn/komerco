@@ -1,7 +1,7 @@
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from .models import Category
+from .models import Category, Listing
 
 
 class IndexView(generic.ListView):
@@ -10,9 +10,10 @@ class IndexView(generic.ListView):
     def get_queryset(self):
         return Category.objects.all()
 
-class DetailView(generic.DeleteView):
+class DetailView(generic.DetailView):
     model = Category
     template_name = 'listing/detail.html'
+
 
 class CategoryCreate(CreateView):
     model = Category

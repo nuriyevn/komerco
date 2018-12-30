@@ -16,6 +16,7 @@ class Listing(models.Model):
     author = models.CharField(max_length=250)
     listing_title = models.CharField(max_length=250)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    telephone = models.CharField(max_length=20)
     is_favorite = models.BooleanField(default=False)
 
     def __str__(self):

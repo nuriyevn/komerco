@@ -2,6 +2,67 @@
 {% block title %}Category Details{% endblock %}
 {% block body %}
 
+
+<div class="container-fluid songs-container">
+    <div class="row">
+        <!-- Left Category Info-->
+        <div class="col-sm-4 col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <a href="{% url 'listing:detail' category.id %}">
+                        {% if category.category_logo %}
+                            <img src="{{category.category_logo}}" class="img-responsive">
+                        {% else %}
+                            <h3>No image to display</h3>
+                        {% endif %}
+                    </a>
+                    <h1>{{ category.name }} <small>{{ category.description }}</small> </h1>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Category Info -->
+        <div class="col-sm-8 col-md-9">
+            <ul class="nav nav-pills" style="margin-bottom: 10px;">
+                <li role="presentation" class="active"><a href="{% url 'listing:detail' category.id %}">View All</a></li>
+                <!--li role="presentation"><a href="{% url 'listing:listing-add' category.id  %}">Add New Listing</a></li-->
+            </ul>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>All Listings</h3>
+                    {% if error_message %}
+                        <p><strong>{{ error_message}}</strong></p>
+                    {% endif %}
+
+                    <table class="table">
+                        <thread>
+                            <tr>
+                                <th>Title</th>
+                                <th>Author</th>
+                                <th>Telephone</th>
+                                <th>Category</th>
+                            </tr>
+                        </thread>
+                        <tbody>
+                            {% for listing in category.listing.all %}
+                                <tr>
+                                    <td>
+                                        {{listing.listing_title}}
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
     <img src="{{ category.category_logo }}" style="width: auto; height: 150px;" alt="">
     <h1>{{ category.name }}</h1>
     <h3>{{ category.description }}</h3>
